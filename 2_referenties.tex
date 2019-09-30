@@ -1,0 +1,158 @@
+\documentclass[a4paper]{article}
+\usepackage[dutch]{babel}
+\usepackage{microtype}
+\usepackage{todonotes}
+\usepackage{csquotes}
+
+\setlength{\voffset}{0pt} \setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt} \setlength{\headsep}{0pt}
+\setlength{\oddsidemargin}{2pt} \setlength{\evensidemargin}{2pt}
+\setlength{\textwidth}{6in} \setlength{\textheight}{9.5in}
+
+\definecolor{darkgreen}{rgb}{0,0.45,0.0}
+
+\newcommand{\bs}{$\backslash$}
+\newcommand{\hem}{\hspace{0.5em}}
+
+\hyphenation{ge-lijk-aardige split-sing re-fe-ren-tie
+  re-fe-ren-ties}
+
+\def\Size{4pt}
+\tikzset{
+      folder/.pic={
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+      }
+    }
+
+\title{Informaticawerktuigen - Groepsopdracht}
+
+\begin{document}
+\begin{center}
+  \huge Informaticawerktuigen \\
+  \Huge Groepsopdracht -- Opgave 2 \\
+  \huge Zoekcriteria en referenties \\
+\end{center}
+\vspace{1em}
+
+
+In een onderbouwd artikel zijn goede referenties essentieel.
+Je bewijst de lezer niet enkel dat de inhoud van het artikel gegrond is, maar geeft de ge\"interesseerde lezer ook verwijzingen naar extra leesmateriaal.
+In deze opgave overlopen we wat we verwachten omtrent de referenties voor jullie artikel.
+In de oefenzittingen over \LaTeX~zullen jullie leren hoe jullie deze referenties gemakkelijk kunnen integreren in een \LaTeX-document.
+
+
+\section{Deliverables}
+
+Voor deze opdracht zullen jullie ons een lijst van zoekcriteria en referenties moeten bezorgen die aansluiten bij jullie onderwerp.
+Op het einde van deze oefenzitting zullen jullie beide lijsten pushen naar jullie GitHub repository in telkens een apart \texttt{.txt}-bestand.
+De structuur van deze bestanden mogen jullie zelf kiezen, zolang dit maar overzichtelijk is.
+De lijsten zijn niet definitief, deze mogen nog aangepast worden in de loop van het semester.
+\textbf{Het is echter wel belangrijk dat de bestanden vandaag nog op jullie GitHub repository geplaatst worden, met substanti\"ele inhoud!}
+
+In te dienen bestanden op de GitHub repository:
+
+\begin{itemize}
+	\item \texttt{/portfolio/zoekcriteria.txt}
+	\item \texttt{/portfolio/referenties.txt}
+\end{itemize}
+
+
+\section{Evaluatiecriteria}
+
+In deze sectie leggen we uit waar je op moet letten bij het refereren naar bronnen.
+Dit maakt eveneens deel uit van criteria waarop we jullie artikel zullen beoordelen.
+
+
+\subsection{Kwaliteit}
+
+Niet elke referentie brengt evenveel bij aan het artikel, dit hangt sterk af van de kwaliteit van de referentie.
+Ten eerste moet de referentie relevant zijn.
+Als je artikel bijvoorbeeld gaat over privacy op het internet, dan zijn referenties naar blogs, artikels of papers over het gebruik van AI voor batterijbesparing in smartphones verre van relevant.
+
+Daarnaast is de betrouwbaarheid van je referentie ook belangrijk.
+Zo zijn referenties naar wetenschappelijke artikels typisch betrouwbaarder.
+Dit omdat deze artikels meestal door experts geschreven zijn en omdat de artikels voor publicatie nog eens door andere experts nagelezen worden (peer review).
+Krantenartikels en gelijkaardige publicaties (nieuwssites, magazines, \ldots) zijn vaak van redelijke kwaliteit, maar kunnen toch ook fouten bevatten.
+Wees dus steeds kritisch als je zulke referenties gebruikt.
+Onderaan het betrouwbaarheidsspectrum staan artikels zoals blog posts.
+Deze hebben vaak een subjectief karakter en zijn meestal niet onderhevig aan een kwaliteitscontrole door iemand anders dan de schrijver.
+Dit wilt niet zeggen dat je nooit mag refereren naar een blog post.
+Als je dit genuanceerd doet zonder de inhoud als automatisch waar te beschouwen, kan het nog altijd een mooie aanvulling zijn in je artikel.
+
+\textbf{Wees dus telkens kritisch over de referenties die je in het artikel gebruikt. Zorg ervoor dat elke referentie relevant is en betrouwbaar genoeg in de context waarin je het gebruikt!}
+
+
+\subsection{Hoeveelheid}
+
+Meer referenties is niet noodzakelijk beter!
+Het is belangrijk dat je ervoor zorgt dat je referenties van goede kwaliteit zijn en dat ze passen in de context van het artikel dat je schrijft.
+E\'en goede referentie is beter dan twee slechte\ldots{}
+
+Zorg er ook voor dat elke referentie uit je referentielijst minstens \'e\'en keer geciteerd wordt in je artikel.
+Een lezer van een populariserend artikel zal nooit manueel over de referentielijst gaan om te kijken wat voor interessante referenties in het artikel gebruikt zijn.
+
+\textbf{Voor de evaluatie van het groepswerk kijken we naar hoeveel goede referenties je hebt, hoeveel van die goede referenties er geciteerd zijn in het artikel en of ze geciteerd worden in de juiste context.
+Groepjes die veel referenties hebben, maar weinig (correcte) citaties zullen dus eerder slecht scoren.
+Minstens 3 referenties moeten wetenschappelijke papers zijn.}
+
+
+\subsection{Plaats in the tekst}
+
+Citaties plaats je \emph{in} een paragraaf, bij een zin die kort beschrijft wat er in de referentie staat.
+Zorg ervoor dat de zin leesbaar blijft indien je de citatie zou weghalen.
+Een voorbeeld van een slechte citatie is:
+
+\begin{displayquote}
+{\color{red} Uit [16] blijkt \ldots}
+\end{displayquote}
+
+Hier verplicht je de lezer om te gaan kijken naar wat referentie 16 precies is, waardoor hij het lezen van je artikel moet onderbreken.
+Dit kan bijzonder storend zijn.
+Volgende citatie is beter:
+
+\begin{displayquote}
+{\color{darkgreen} Uit het bevolkingsregister van Belgi\"e [16] blijkt \ldots}
+\end{displayquote}
+
+Indien de referentie slaat op de volledige zin, dan zet je de citatie op het einde van de zin.
+
+\begin{displayquote}
+{\color{darkgreen} Aangezien onze driehoek rechthoekig is, kunnen we de lengte van de schuine zijde berekenen door de wortel te nemen van de som van de gekwadrateerde lengtes van de overige zijden [5].}
+\end{displayquote}
+
+Zorg er zeker voor dat je de citaties niet altijd op het einde van een paragraaf zet.
+Ze horen ook niet thuis in een titel of subtitel.
+
+
+\subsection{Afwerking}
+
+Soms is het nodig dat je bij \'e\'en woord/zin meerdere citaties plaatst.
+Indien je in \LaTeX{} gewoon meerdere \texttt{\textbackslash{}cite}-commando's gebruikt, zal je resultaat er als volgt uitzien:
+
+\begin{displayquote}
+{\color{red} De wetten van Newton [4][19][7] bepalen\ldots}
+\end{displayquote}
+
+Je kunt in dit geval beter meerdere referenties in \'e\'en \texttt{\textbackslash{}cite}-commando gebruiken.
+Je kunt de referenties gewoon van elkaar scheiden met een komma (bv.\ \texttt{\textbackslash{}cite\{Ref1,Ref2,Ref3\}}).
+Dit geeft het volgende (mooier) resultaat:
+
+\begin{displayquote}
+{\color{darkgreen} De wetten van Newton [4, 7, 19] bepalen\ldots}
+\end{displayquote}
+
+Soms is het nodig om dezelfde referentie meerdere keren aan te halen, maar met telkens een klein verschil (bijvoorbeeld, telkens hetzelfde boek, maar met andere paginanummers).
+In dit geval kan je best extra informatie meegeven aan het \texttt{\textbackslash{}cite}-commando als volgt: \texttt{\textbackslash{}cite[p.~212-217]\{Ref1\}}.
+Het resultaat ziet er dan als volgt uit:
+
+\begin{displayquote}
+{\color{darkgreen} De wetten van Newton [4, p.~212--217] bepalen\ldots}
+\end{displayquote}
+
+
+\input{addendum.tex}
+
+\end{document}

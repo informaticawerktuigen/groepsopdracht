@@ -1,0 +1,57 @@
+\documentclass[a4paper]{article}
+\usepackage[dutch]{babel}
+\usepackage{microtype}
+\usepackage{todonotes}
+
+\setlength{\voffset}{0pt} \setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt} \setlength{\headsep}{0pt}
+\setlength{\oddsidemargin}{2pt} \setlength{\evensidemargin}{2pt}
+\setlength{\textwidth}{6in} \setlength{\textheight}{9.5in}
+
+\def\Size{4pt}
+\tikzset{
+      folder/.pic={
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+      }
+    }
+
+\title{Informaticawerktuigen - Groepsopdracht}
+
+\begin{document}
+\begin{center}
+  \huge Informaticawerktuigen \\
+  \Huge Groepsopdracht -- Deadlines
+\end{center}
+\vspace{1em}
+
+
+In dit document vinden jullie een samenvatting van alle deliverables en deadlines voor de groepsopdracht.
+
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{ l | l r }
+            \textbf{Deliverable}            & \textbf{Locatie}                      & \textbf{Deadline} \\ \hline
+            Lijst van zoekcriteria$^{\ast}$ & \texttt{/portfolio/zoekcriteria.txt}  & 4/10 \\
+            Lijst van referenties$^{\ast}$  & \texttt{/portfolio/referenties.txt}   & 4/10 \\
+            Inhoudsopgave$^{\ast}$          & \texttt{/portfolio/inhoudsopgave.txt} & 25/10 \\
+            Formatieve peer assessment      & Toledo                                & 3/11 \\
+            Voorlopige tekst$^{\ast}$       & \texttt{/tekst/}                      & 10/11 \\
+            Evaluatie van andere groepje    & Individuele GitHub repository      & 15/11 \\
+            Portfolio                       & \texttt{/portfolio/}                  & 24/11 \\
+            Definitieve peer assessment     & Toledo                                & 24/11 \\
+            Definitieve tekst               & \texttt{/tekst/}                      & 24/11 \\
+            Presentatie                     & \texttt{/presentatie/}                & 26/11 - 27/11 \\
+        \end{tabular}
+        \caption{
+            Samenvattende tabel van alle deliverables en deadlines.
+            Een asterisk ($^{\ast}$) geeft aan dat het om een voorlopige deliverable gaat, deze mag na de deadline nog worden bijgewerkt.
+        }
+    \end{center}
+\end{table}
+
+\input{addendum.tex}
+
+\end{document}

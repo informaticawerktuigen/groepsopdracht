@@ -1,0 +1,143 @@
+\documentclass[a4paper]{article}
+\usepackage[dutch]{babel}
+\usepackage{microtype}
+\usepackage{todonotes}
+\usepackage{url}
+
+\setlength{\voffset}{0pt} \setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt} \setlength{\headsep}{0pt}
+\setlength{\oddsidemargin}{2pt} \setlength{\evensidemargin}{2pt}
+\setlength{\textwidth}{6in} \setlength{\textheight}{9.5in}
+
+\def\Size{4pt}
+\tikzset{
+      folder/.pic={
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+      }
+    }
+
+\title{Informaticawerktuigen - Git}
+
+\begin{document}
+\begin{center}
+  \huge Informaticawerktuigen \\
+  \Huge Git en GitHub Classroom \\
+\end{center}
+\vspace{1em}
+
+In de vorige oefenzitting heb je kennisgemaakt met Git.
+Git is een version control system (VCS) dat toelaat om eenvoudig de veranderingen van bestanden doorheen de tijd bij te houden.
+Meestal integreert een VCS ook een manier om de bestanden – inclusief hun geschiedenis – te delen met andere mensen.
+Dit zorgt ervoor dat een VCS een onmisbaar hulpmiddel is tijdens het ontwikkelen van software.
+
+Buiten Git zijn er nog veel andere VCS’en, een paar van de meer bekende zijn Subversion en CVS.
+Onder andere door diensten zoals GitHub is Git de laatste jaren echter ongezien populair geworden, wat ervoor gezorgd heeft dat er online zeer veel documentatie over te vinden is.
+Jullie worden aangemoedigd van deze documentatie gebruik te maken tijdens deze oefenzitting en jullie groepswerk.
+
+Als stapje in de goede richting verwijzen we naar het vrij beschikbare Pro Git boek\footnote{\url{https://git-scm.com/book/en/v2}} (meer specifiek de hoofdstukken 1.1, 1.6, 2.1, 2.2, 2.3, 2.4, 2.5) en de GitHub Cheat Sheet\footnote{\url{https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf}}.
+
+\section{Registreren op GitHub Classroom}
+
+Zorg eerst dat je geregistreerd bent op GitHub Classroom en dat je in de juiste groep zit.
+De uitleg hierover vind je op Toledo onder \underline{Opdrachten} $\rightarrow$ \underline{Groepsopdracht} $\rightarrow$ \underline{Registreren op GitHub Classroom:}.
+
+
+\section{Een kleine oefening}
+Om jullie op gang te zetten, willen we jullie nu een kleine opdracht geven.
+Deze zal je leren werken met de Git repository die je zal gebruiken voor de groepsopdracht.
+Het is belangrijk dat je hiermee leert werken, want je zal in deze repository alle bestanden moeten plaatsen die je gebruikt in het groepswerk.
+
+De rest van deze opgave gaat er van uit dat je een GNU/Linux distributie gebruikt om aan je groepswerk te werken.
+Indien je een ander besturingssysteem wenst te gebruiken, kan het zijn dat de vermelde commando’s niet allemaal werken.
+We verwachten dan toch nog dat je de stappen in dit document doorloopt!
+
+
+\subsection{De configuratie}
+Voor jullie beginnen aan de opdracht, moeten jullie eerst Git configureren indien dit nog niet gebeurd zou zijn.
+Doe dit met behulp van de volgende commando’s. Vul je eigen naam en achternaam in:
+
+\break
+\noindent
+\texttt{\$ git config --global user.name "Voornaam Achternaam"} \\
+\texttt{\$ git config --global user.email "voornaam.achternaam@student.kuleuven.be"} \\
+\texttt{\$ git config --global core.editor nano} \\
+
+
+\subsection{De repository clonen}
+Om te kunnen werken binnen onze toegewezen online repository, zullen we deze eerst moeten clonen.
+Elke online repository heeft een adres waarop het bereikbaar is, deze hebben we nodig.
+De URL van je GitHub Classroom repository ziet er zo uit:
+
+\texttt{https://github.com/informatica-werktuigen/groepsopdracht-groep-\#\#} \\
+
+Hierin vervang je de ``\texttt{\#\#}'' door je groepsnummer.
+Voor groep 5 zou dit er bijvoorbeeld als volgt uitzien:
+
+\texttt{https://github.com/informatica-werktuigen/groepsopdracht-groep-05} \\
+
+Om de repository te clonen, ga je eerst (met de commandline) naar een directory waarin je op je lokale machine wilt werken, bijvoorbeeld \texttt{\textasciitilde/work/1ba/iw}.
+Gebruik dan het \texttt{git clone} commando met de bovenstaande URL om de inhoud van de online repository te clonen naar de locatie op je lokale machine.
+Voor groep 5 zou dat bijvoorbeeld het volgende commando zijn:
+
+\texttt{\$ git clone https://github.com/informatica-werktuigen/groepsopdracht-groep-05} \\
+
+Als alles goed is verlopen, zou je nu op je lokale machine de bestandsstuctuur van de online repository moeten zien.
+
+
+\subsection{Aanpassingen synchroniseren met de online repository}
+Indien je de bestandsstructuur op je lokale machine zou aanpassen (door bijvoorbeeld bestanden toe te voegen of the verwijderen) of de inhoud van een bestand zou wijzigen, dan wordt dit nog niet meteen gesynchroniseerd met de online repository.
+Om deze aanpassingen te synchroniseren met de online repository, zal je \texttt{git} commando's moeten gebruiken.
+In deze oefening zal je een tekstbestand toevoegen waarin je je kort voorstelt aan de groep.
+Concreet zal dit tekstbestand je naam, je GitHub accountnaam en een korte beschrijving over jezelf (hobby's, interesses, etc.) bevatten.
+We doorlopen dit proces stapsgewijs:
+
+\begin{enumerate}
+    \item Maak een bestand aan onder \texttt{beschrijving/leden} met als naam je studentennummer (bv. q1234567.txt) en als inhoud de beschrijving over jezelf.
+    \begin{enumerate}
+        \item Begeef je met de command line interface naar \texttt{beschrijving/leden}.
+        \item Je kan bestanden aanmaken en schrijven met de text editor \texttt{nano} gebruiken door het volgende commando uit te voeren:
+            \texttt{\$ nano [bestandsnaam]}
+        \item Typ via deze text editor je naam, je GitHub accountnaam en een korte beschrijving over jezelf.
+            \textbf{Dit bestand wordt gebruikt om je te identificeren, dus zorg zeker dat je echte naam en accountnaam hierin staan!}
+            \begin{enumerate}
+                \item Sluit de text editor met \texttt{Ctrl + X}
+                \item Hierna wordt gevraagd of je het bestand wilt opslaan.
+                    Stem hiermee in door op \texttt{Y} te drukken.
+                \item Daarna wordt gevraagd onder welke naam je het bestand wilt opslaan.
+                    Controleer of dit juist is en druk op \texttt{Enter}.
+            \end{enumerate}
+    \end{enumerate}
+    \item Synchroniseer met de online repository
+    \begin{enumerate}
+        \item Geef aan dat je de wijzigingen aan dit bestand wilt synchroniseren met de online repository.
+            Dit doe je met volgende commando: \\
+            \texttt{\$ git add [bestandsnaam]}
+        \item Gebruik nu het \texttt{commit} commando om je wijzigingen klaar te maken voor het synchroniseren.
+            Hierbij wordt een kort maar voldoende beschrijvend bericht geplaatst zodat andere personen die ook werken in de online repository kunnen zien wat je hebt gewijzigd.
+            Gebruik hiervoor het volgende commando: \\
+            \texttt{\$ git commit -m "Toevoegen persoonlijke beschrijving"}
+        \item Nu staat alles klaar om gesynchroniseerd te worden.
+            Er schuilt alleen nog \'e\'en addertje onder het gras.
+            In de tussen tijd kan \'e\'en van de andere groepsleden ook een wijziging hebben aangebracht.
+            Daarom kan je v\'o\'or de finale push best eerst zorgen dat alle wijzingen die ondertussen zijn aangebracht aan de online repository ook naar je lokale repository worden gebracht.
+            Hiervoor gebruik je het volgende commando: \\
+            \texttt{\$ git pull}
+        \item Nu zijn we aangekomen bij de laatste stap; onze wijzingen overbrengen naar de online repository.
+            Gebruik nu dit commando: \\
+            \texttt{\$ git push}
+    \end{enumerate}
+\end{enumerate}
+
+
+\section{Bonus opdracht}
+
+Voeg een README.md bestand toe aan de map \texttt{/beschrijving/} met daarin de titel van jullie toegewezen onderwerp en eventueel een korte uitleg.
+Op de GitHub web page van jullie repository worden README.md\footnote{\url{https://help.github.com/en/articles/about-readmes}} gerenderd door middel van het Markdown\footnote{\url{https://guides.github.com/features/mastering-markdown/}} formaat.
+
+
+\input{addendum.tex}
+
+\end{document}

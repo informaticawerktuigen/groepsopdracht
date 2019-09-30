@@ -1,0 +1,265 @@
+\documentclass[a4paper]{article}
+\usepackage[dutch]{babel}
+\usepackage{microtype}
+\usepackage{todonotes}
+\usepackage{forest}
+\usepackage{url}
+\usepackage{ulem}
+
+\definecolor{folderbg}{RGB}{124,166,198}
+\definecolor{folderborder}{RGB}{110,144,169}
+
+\setlength{\voffset}{0pt} \setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt} \setlength{\headsep}{0pt}
+\setlength{\oddsidemargin}{2pt} \setlength{\evensidemargin}{2pt}
+\setlength{\textwidth}{6in} \setlength{\textheight}{9.5in}
+
+\def\Size{4pt}
+\tikzset{
+      folder/.pic={
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+          (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+      }
+    }
+
+\title{Informaticawerktuigen - Groepsopdracht}
+
+\begin{document}
+\begin{center}
+  \huge Informaticawerktuigen \\
+  \Huge Groepsopdracht -- Opgave 1 \\
+  \huge Introductie
+\end{center}
+\vspace{1em}
+
+Dit is de eerste en samenvattende opgave van de groepsopdracht.
+Lees deze opgave grondig door zodat je weet wat er voor deze groepsopdracht van jullie verwacht wordt.
+Aarzel niet om eventuele vragen te stellen aan de assistenten.
+Een samenvatting van de deadlines voor deze groepsopdracht kan je vinden op Toledo onder \underline{Opdrachten} $\rightarrow$ \underline{Groepsopdracht} $\rightarrow$ \underline{Deadlines}.
+
+
+\section{Doelstellingen}
+
+Voor het eerste practicum van het vak informaticawerktuigen zullen jullie in groep een populariserend wetenschappelijk artikel moeten schrijven en een presentatie moeten maken over een gegeven onderwerp.
+Jullie zitten hiervoor samen tijdens een aantal oefenzittingen in het eerste semester, waarin jullie het onderwerp nader zullen onderzoeken.
+Alle afgeleverde wetenschappelijke artikels zullen gebundeld worden in een magazine dat we op het einde van het semester ter beschikking stellen, zodat jullie de artikels van andere groepjes ook kunnen lezen.
+
+We focussen in deze opdracht op volgende doelstellingen:
+
+\paragraph{Werken in groep}
+Iedereen zal vroeg of laat moeten werken in groep.
+Het is dan ook belangrijk dat je leert op een effici\"ente manier samen te werken en problemen gestructureerd aan te pakken.
+Hierdoor kan dubbel en zinloos werk vermeden worden.
+
+\paragraph{Wetenschappelijk werken}
+Aangezien je een wetenschappelijke opleiding volgt, is het bijzonder belangrijk dat je leert om op een wetenschappelijke manier te werken.
+Dit houdt onder meer in dat je informatie op een correcte manier vergaart en verwerkt in een tekst en presentatie.
+
+\paragraph{Kwalitatief schrijven}
+Een goede tekst schrijven is minder makkelijk dan het op het eerste gezicht misschien lijkt.
+Deze moet goed gestructureerd zijn en het taalgebruik moet natuurlijk ook correct zijn.
+
+\paragraph{Vulgariserend schrijven}
+De tekst moet niet alleen goed zijn, maar moet ook begrijpbaar zijn voor je doelpubliek.
+Daarom is het belangrijk dat je het juiste niveau van moeilijkheidsgraad kiest.
+
+\paragraph{Presenteren}
+Het is belangrijk om goed te leren presenteren.
+In een presentatie moet je de kern van de tekst zo goed mogelijk en duidelijk weergeven in een beperkte tijd.
+
+\paragraph{Werken met \LaTeX~en \textbf{Beamer}}
+Het wetenschappelijk artikel zullen jullie schrijven in \LaTeX\footnote{\url{https://www.latex-project.org/}}, een populair softwaresysteem voor het genereren van allerlei (wetenschappelijke) documenten.
+De presentatie zullen jullie maken met behulp van het Beamer-pakket van \LaTeX.
+
+
+\section{Werkwijze}
+
+Elk groepje krijgt een onderwerp toegewezen dat zich situeert in de context van ``informatica in de samenleving''.
+Gewapend met een snelle internetverbinding en toegang tot de tools van de campusbibliotheek, zullen jullie een populariserend, wetenschappelijk artikel over dit onderwerp schrijven.
+Aan het eind van deze opdracht worden alle artikels verzameld in een magazine dat ter jullie beschikking wordt gesteld, zodat jullie elkaars werk ook kunnen lezen.
+
+
+\subsection{Version control}
+\label{sec:version-control}
+
+Om de samenwerking in groep bevorderen, zullen jullie gebruik maken van version control software, meer specifiek \textit{git}.\footnote{\url{https://git-scm.com/}}
+Op deze manier kan ieder lid van de groep rechtstreeks bijdragen aan het project op een gemakkelijke manier.
+Iedere groep krijgt toegang tot hun eigen online git repository via GitHub Classroom.
+Voor meer informatie over hoe je git kan gebruiken, verwijzen we naar het git document op Toledo.
+Als informaticus zullen jullie in jullie verdere carri\`ere nog vaak in aanraking komen met git (of een andere vorm van version control), daarom loont het zeker de moeite om dit zo snel mogelijk onder te knie te krijgen!
+
+Jullie git repository houdt een specifieke structuur aan om het overzicht doorheen het project te bewaren.
+Deze wordt afgebeeld in Figuur~\ref{fig:bestandsstuctuur}.
+
+\begin{figure}[h]
+\begin{center}
+\begin{forest}
+      for tree={
+        font=\ttfamily,
+        grow'=0,
+        child anchor=west,
+        parent anchor=south,
+        anchor=west,
+        calign=first,
+        inner xsep=7pt,
+        edge path={
+          \noexpand\path [draw, \forestoption{edge}]
+          (!u.south west) +(7.5pt,0) |- (.child anchor) pic {folder} \forestoption{edge label};
+        },
+        % style for your file node
+        file/.style={edge path={\noexpand\path [draw, \forestoption{edge}]
+          (!u.south west) +(7.5pt,0) |- (.child anchor) \forestoption{edge label};},
+          inner xsep=2pt,font=\small\ttfamily
+                     },
+        before typesetting nodes={
+          if n=1
+            {insert before={[,phantom]}}
+            {}
+        },
+        fit=band,
+        before computing xy={l=15pt},
+      }
+    [repository
+      [beschrijving
+      	[groepsleden]
+      ]
+      [portfolio
+      	[verslagen]
+      ]
+      [presentatie]
+      [tekst]
+    ]
+ \end{forest}
+ \end{center}
+ \caption{Bestandsstructuur van jullie git repository.}
+ \label{fig:bestandsstuctuur}
+ \end{figure}
+
+
+\paragraph{/beschrijving/}
+In deze directory staat de beschrijving van het onderwerp waarover jullie een tekst zullen schrijven en een presentatie zullen geven.
+\paragraph{/beschrijving/groepsleden/}
+Deze directory bevat voor ieder groepslid een tekstbestand met een korte persoonlijke beschrijving over dat groepslid.
+Dit moest je in de vorige opdracht al even aanvullen.
+Er is ook een tekstbestand aanwezig dat al de leden van jullie groep opsomt.
+\paragraph{/portfolio/}
+Deze directory bevat alle bestanden die jullie portfolio omvatten.
+Dit zijn onder andere de verzameling van zoekcriteria, referenties en de inhoudsopgave.
+\paragraph{/portfolio/verslagen/}
+In deze directory staat er per vergadering van jullie groep een bestand met als inhoud het verslag van deze vergadering.
+Dit bestand wordt telkens door de \textbf{notulist} gepusht.
+\paragraph{/presentatie/}
+In deze directory plaatsen jullie de bronbestanden van je presentatie.
+\paragraph{/tekst/}
+Deze directory bevat de tekst die jullie gaan schrijven in het kader van dit groepswerk.\\
+
+Merk op dat de \textbf{/presentatie/} en \textbf{/tekst/} directories \textbf{geen door \LaTeX{} gegenereerde bestanden} (o.a.\ *.log, *.aux, *.gz) mag bevatten.\footnote{Hiervoor kan je zorgen door ze niet mee te geven met het \texttt{git add} commando.}
+Om jullie te helpen, hebben we al een \texttt{.gitignore} bestand in de repository geplaatst.
+Dit bestand geeft aan welke bestanden door git genegeerd mogen worden, en wordt gebruikt in quasi elk git project omdat het net zo handig is.
+Meer informatie over gitignore vind je hier: \url{https://git-scm.com/docs/gitignore}.
+
+
+\subsection{Rolverdeling}
+
+Voor elke vergadering (dus ook deze!) vervult er iemand de rol van \textbf{projectleider} en iemand de rol van \textbf{notulist}.
+\textbf{Zorg ervoor dat iedereen gedurende minstens \'e\'en les elke rol vervuld heeft.}
+
+
+\subsubsection{Projectleider}
+
+Als projectleider leidt je de vergadering.
+Een goede projectleider heeft altijd een overzicht van de taken waaraan zijn groepsleden werken tijdens de oefenzitting en tracht de productiviteit te bevorderen door op een juiste manier de taken te verdelen.
+
+Enkele Richtlijnen:
+\begin{itemize}
+	\item Overloop in het begin van de oefenzitting de taken/deadlines waaraan er gewerkt zal moeten worden en verdeel ze (met inspraak van de groep).
+	\item Co\"ordineer goed in de vergaderingen, zodat er geen dubbel of zinloos werk wordt verricht.
+	\item Als projectleider neem je de leiding, maar sta je wel nog open voor suggesties van andere groepsleden.
+	\item Bekijk enkele minuten voor het einde van de oefenzitting welke taken af zijn. Bespreek eventueel welke taken buiten de oefenzitting nog afgemaakt moeten worden. Dit wordt genoteerd door de notulist.
+\end{itemize}
+
+
+\subsubsection{Notulist}
+
+Zoals in Sectie~\ref{sec:version-control} al aangegeven stond, wordt er verwacht dat er voor iedere vergadering een verslag geschreven wordt.
+Dit is de taak van de notulist, die ook het verslag beschikbaar zal stellen in de online git repository.
+Dit verslag moet voldoen aan de volgende vereisten:
+
+\begin{itemize}
+	\item Bevat de datum, het uur, de aanwezigheden, en de namen van de notulist en projectleider voor deze vergadering
+	\item Bevat een samenvatting van wat er in deze vergadering is besproken/gedaan.
+	\item Geen essay, schrijf kort en bondig! Gebruik bv.\ bullet points, etc.
+	\item Goed gestructureerd
+	\item Richtlijn: niet meer dan 30 regels per verslag
+\end{itemize}
+
+Sla elk verslag in een apart tekstbestand op in de git repository onder de subdirectory \textbf{/portfolio/verslagen}.
+Vergeet zeker niet om dit bestand te \textbf{pushen} naar jullie online repository!
+Dit verslag dient voor ons om jullie vooruitgang op te volgen en voor jullie om een duidelijke rapportering aan te leren voor vergaderingen.
+
+
+\subsubsection{Elk groepslid}
+
+Wanneer je niet de notulist of projectleider bent, wilt dat natuurlijk niet zeggen dat je geen verantwoordelijkheid draagt.
+Je dient actief en kritisch mee te denken over zaken die besproken worden en waar nodig kan je de projectleider of notulist bijsturen.
+Andersom wilt het ook niet zeggen dat je als notulist of projectleider geen andere taken hebt!
+Ook zij zullen zich bezig moeten houden met het opzoeken van informatie, schrijven, etc.
+
+Van elk groepslid wordt het volgende verwacht:
+
+\begin{itemize}
+	\item Zoals elke oefenzitting van dit vak, zijn ook de oefenzittingen rond het groepswerk verplicht. Wees dus altijd aanwezig (in geval van overmacht kan je dit natuurlijk altijd aangeven bij het assistententeam).
+	\item Maak een degelijke planning, zorg ervoor dat je tijd genoeg hebt om alle onderdelen van de opgave te vervullen.
+	\item Zorg ervoor dat je op een effici\"ente manier werkt: verlies geen tijd in oeverloze en zinloze discussies.
+\end{itemize}
+
+
+\subsection{Evaluatie}
+
+Enerzijds zullen de deliverables als groep ge\"evalueerd worden (zoekcriteria, referenties, artikel en presentatie) door professor Berbers.
+Voor elk van deze deliverables krijgen jullie tips in de relevante opgave, zodat jullie weten waarop te letten bij het maken van de opdrachten.
+
+Anderzijds zullen jullie ook beoordeeld worden door elkaar in de vorm van een \textit{peer assessment} en een \textit{peer review}.
+
+\subsubsection{Peer assessment}
+
+Via de peer assessment zal jij je groepsleden kunnen beoordelen op basis van een aantal criteria, en jij zal op dezelfde manier beoordeeld worden door je groepsleden.
+Doorheen het semester zullen er twee peer assessments worden afgenomen via Toledo.
+De eerste is een formatieve peer assessment, deze zal geen invloed hebben op je eindresultaat voor dit vak.
+Je zal de punten die je groepsleden je hebben gegeven, kunnen inkijken.
+Gebruik dit als indicatie om te bepalen of je goed bezig bent of dat je nog een tandje zal moeten bijsteken.
+De tweede peer assessment is definitief, deze zal wel meetellen voor je eindresultaat.
+
+
+\subsubsection{Peer review}
+
+Via de peer review zal de voorlopige tekst die jullie ingediend hebben, beoordeeld worden door studenten uit andere groepjes.
+Je zal dus zelf ook een voorlopige tekst moeten reviewen.
+Van elk groepje wordt verwacht de relevante punten uit elke evaluatie mee te nemen in het verdere verbeteringsproces van het artikel.
+Via Toledo zullen jullie op de hoogte worden gebracht wanneer deze peer review beschikbaar zal zijn.
+Hou dus zeker mededelingen op de vakpagina en je studentenmailbox in de gaten.
+
+
+\section{In de rest van deze oefenzitting}
+
+In de rest van deze oefenzitting zullen jullie kennis maken met git en GitHub classroom, maar ook al beginnen met het zoeken naar referenties.
+\textbf{Als er nog geen projectleider en notulist zijn aangeduid, doe dit dan nu!}
+
+
+\subsection{Git en GitHub Classroom}
+
+Neem eerst het document omtrent git door en maak de opdrachten.
+Dit document kan je vinden op Toledo onder \underline{Opdrachten} $\rightarrow$ \underline{Groepsopdracht} $\rightarrow$ \underline{Git opdracht}.
+
+
+\subsection{Zoekcriteria en referenties}
+
+Als je klaar bent met de opdrachten in het git document, begin je met de volgende opdracht te maken.
+Deze kan je vinden op Toledo onder \underline{Opdrachten} $\rightarrow$ \underline{Groepsopdracht} $\rightarrow$ \uline{Groepsopdracht - Zoekcriteria en Referenties}.
+
+
+\input{addendum.tex}
+
+\end{document}
