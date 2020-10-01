@@ -1,7 +1,6 @@
 \documentclass[a4paper]{article}
 \usepackage[dutch]{babel}
 \usepackage{microtype}
-\usepackage{todonotes}
 \usepackage{url}
 
 \setlength{\voffset}{0pt} \setlength{\topmargin}{0pt}
@@ -9,15 +8,6 @@
 \setlength{\oddsidemargin}{2pt} \setlength{\evensidemargin}{2pt}
 \setlength{\textwidth}{6in} \setlength{\textheight}{9.5in}
 
-\def\Size{4pt}
-\tikzset{
-      folder/.pic={
-        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
-          (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
-        \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
-          (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
-      }
-    }
 
 \title{Informaticawerktuigen - Git}
 
@@ -71,18 +61,18 @@ Om te kunnen werken binnen onze toegewezen online repository, zullen we deze eer
 Elke online repository heeft een adres waarop het bereikbaar is, deze hebben we nodig.
 De URL van je GitHub Classroom repository ziet er zo uit:
 
-\texttt{https://github.com/informatica-werktuigen/groepsopdracht-groep-\#\#} \\
+\texttt{https://github.com/informaticawerktuigen2020-2021/groepsopdracht-groep-\#\#} \\
 
 Hierin vervang je de ``\texttt{\#\#}'' door je groepsnummer.
 Voor groep 5 zou dit er bijvoorbeeld als volgt uitzien:
 
-\texttt{https://github.com/informatica-werktuigen/groepsopdracht-groep-05} \\
+\texttt{https://github.com/informaticawerktuigen2020-2021/groepsopdracht-groep-05} \\
 
 Om de repository te clonen, ga je eerst (met de commandline) naar een directory waarin je op je lokale machine wilt werken, bijvoorbeeld \texttt{\textasciitilde/work/1ba/iw}.
 Gebruik dan het \texttt{git clone} commando met de bovenstaande URL om de inhoud van de online repository te clonen naar de locatie op je lokale machine.
 Voor groep 5 zou dat bijvoorbeeld het volgende commando zijn:
 
-\texttt{\$ git clone https://github.com/informatica-werktuigen/groepsopdracht-groep-05} \\
+\texttt{\$ git clone https://github.com/informaticawerktuigen2020-2021/groepsopdracht-groep-05} \\
 
 Als alles goed is verlopen, zou je nu op je lokale machine de bestandsstuctuur van de online repository moeten zien.
 
@@ -137,7 +127,7 @@ Voeg een README.md bestand toe aan de map \texttt{/beschrijving/} met daarin de 
 Op de GitHub web page van jullie repository worden README.md\footnote{\url{https://help.github.com/en/articles/about-readmes}} gerenderd door middel van het Markdown\footnote{\url{https://guides.github.com/features/mastering-markdown/}} formaat.
 
 Probeer ook eens wat er gebeurt als jij en een teamgenoot beiden aan hetzelfde bestand werken.
-Probeer het resulterende merge conflict (nadat jullie beiden, add, commit, pull, push hebben gedaan) samen op te lossen \footnote{\url{https://git-scm.com/docs/git-merge#_how_conflicts_are_presented}}.
+Probeer het resulterende merge conflict (nadat jullie beiden, add, commit, pull, push hebben gedaan) samen op te lossen.\footnote{\url{https://git-scm.com/docs/git-merge#_how_conflicts_are_presented}}
 
 
 \input{addendum.tex}
