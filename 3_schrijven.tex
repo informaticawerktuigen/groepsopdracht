@@ -2,9 +2,10 @@
 \usepackage[dutch]{babel}
 \usepackage{microtype}
 \usepackage{url}
-\usepackage{dtklogos}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{hologo}
+\usepackage{graphicx}
 
 \setlength{\voffset}{0pt} \setlength{\topmargin}{0pt}
 \setlength{\headheight}{0pt} \setlength{\headsep}{0pt}
@@ -31,7 +32,7 @@ Het populariserend artikel zal geschreven worden in \LaTeX{}, hierover hebben ju
 
 \subsection{Inhoudsopgave}
 
-\textbf{Tegen het einde van de dag (vrijdag 23/10)} zullen jullie een eerste versie van de inhoudsopgave in jullie repository moeten plaatsen.
+\textbf{Tegen het einde van de dag (vrijdag 15/10)} zullen jullie een eerste versie van de inhoudsopgave in jullie repository moeten plaatsen.
 In deze oefenzitting hebben jullie genoeg tijd om dit tot een goed einde te brengen.
 Zoals aangeven in de samenvatting van de deadlines, plaatsen jullie dit onder \texttt{/portfolio/inhoudsopgave.txt}.
 We verwachten geen perfect uitgelijnde structuur, je kan dit eerder zien als een klad versie van de toekomstige inhoudsopgave.
@@ -40,17 +41,20 @@ In het uiteindelijke artikel kan je \LaTeX{} de inhoudstabel automatisch laten g
 
 \subsection{Voorlopige tekst}
 
-We verwachten dat \textbf{ten laatste zondag 8/11} een voorlopige versie van het artikel beschikbaar zal zijn in jullie repository onder de locatie \texttt{/tekst/artikel.tex}, zoals aangegeven in de samenvatting van de deadlines.
+We verwachten dat \textbf{ten laatste zondag 7/11} een voorlopige versie van het artikel beschikbaar zal zijn in jullie repository onder de locatie \texttt{/tekst/artikel.tex}, zoals aangegeven in de samenvatting van de deadlines.
 Dit \texttt{.tex}-bestand moet compileerbaar zijn met de commando's ``\texttt{pdflatex artikel.tex}'' en ``\texttt{bibtex artikel}'', of ``\texttt{latexmk -pdf artikel.tex}'' zoals besproken in de oefenzitting rond \LaTeX{}.
 Uiteraard mogen jullie de broncode van het artikel opdelen door nieuwe \texttt{.tex}-bestanden toe te voegen waarnaar jullie verwijzen in \texttt{artikel.tex} door middel van de \LaTeX{}-instructie \texttt{\textbackslash input} (dit wordt zelfs aangemoedigd!).
 
 Het uiteindelijke artikel (dus nog niet de voorlopige versie) moet minstens voldoen aan de volgende voorwaarden:
 \begin{itemize}
 	\item
-		Het artikel is minstens 5 en maximum 6 bladzijden (exclusief titelpagina, lijst van referenties en afbeeldingen), in het standaard lettertype van \LaTeX{} en met de standaardafmetingen van kantlijnen, etc.
+		Het artikel zal tussen de 2000 en 2200 woorden moeten bevatten, dit zal min of meer uitkomen op 5 tot 7 pagina's (afhankelijk van de hoeveelheid figuren, tabellen, etc.).
 		\textbf{Deze onder- en bovenlimiet zijn harde limieten!}
+		Het aantal woorden wordt berekend met de tool \texttt{texount}.
+		Om na te gaan of jullie artikel voloet, kunnen jullie zelf ook \texttt{texcount} gebruiken.
+		Aan het einde van dit document wordt dit verder uitgelegd.
 	\item
-		Refereer in je tekst, waar relevant, naar de artikels die je hebt opgezocht met behulp van de \LaTeX{}-tool \BibTeX{}.
+		Refereer in je tekst, waar relevant, naar de artikels die je hebt opgezocht met behulp van de \LaTeX{}-tool \hologo{BibTeX}.
 		\textbf{Zorg voor 7 \`a 15 goede en voldoende diverse referenties.}
 		\textbf{Minstens 3 referenties hiervan moeten refereren naar wetenschappelijke artikels.}
 \end{itemize}
@@ -167,6 +171,36 @@ Beperk je hierbij tot kleine stukken tekst.
 Voor grote stukken tekst gebruik je referenties.
 Vergeet bij je citaties nooit de bron te vermelden; dit doe je ook indien je figuren van anderen gebruikt of wanneer je teksten vertaalt.
 
+
+\section{Repository checks}
+
+Jullie GitHub repository is zodanig geconfigureerd dat na elke push automatisch een test wordt uitgevoerd door middel van GitHub Actions.\footnote{\url{https://github.com/features/actions}}
+De uitkomst van deze test -- bestaande uit drie checks -- kunnen jullie afleiden van de badges die te zien zijn op de web pagina van jullie GitHub repository.
+Een voorbeeld van deze badges staat afgebeeld in Figuur~\ref{fig:badges}.
+
+De test bestaat uit deze drie checks:
+
+\begin{itemize}
+	\item De \LaTeX{}-broncode compileert zonder fouten.
+	\item Er staan geen tijdelijke \LaTeX{}-bestanden in de repository (bv. bestanden eindigend op .aux, .log en .pdf).
+	\item Het artikel voldoet aan de woordlimiet.
+\end{itemize}
+
+De badges zijn vooral bedoeld om jullie een indicatie te geven of het artikel voldoet aan de vereisten (en om jullie kennis te laten maken met badges).
+De uitkomst van deze checks wordt enkel door ons bekeken wanneer het artikel ingediend wordt, dan zullen deze alle drie \texttt{passing} moeten zijn.
+Klik op een badge om meer informatie te krijgen over de oorzaak van een \texttt{failing} check.
+
+Zoals eerder aangehaald, wordt de laatste check uitgevoerd door middel van de tool \texttt{texcount}.
+Je kan natuurlijk ook altijd zelf checken of het artikel voldoet aan de woordlimiet.
+De tool \texttt{texcount} is onderdeel van de \texttt{texlive-extra-utils}-package; installeer deze dus voordat je de tool probeert te gebruiken.
+Het commando \texttt{texcount -inc artikel.tex} zal zorgen voor een output met enkele interessante getallen, waaronder het totale aantal woorden in het artikel (`\textit{Words in text:}')
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{figures/iw-badges-voorbeeld.png}
+	\caption{GitHub badges}
+	\label{fig:badges}
+\end{figure}
 
 \input{addendum.tex}
 
